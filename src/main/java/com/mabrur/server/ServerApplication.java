@@ -15,7 +15,7 @@ public class ServerApplication {
 
 	@GetMapping
 	public String index() {
-		return "Greeetings Mabrur";
+		return "Greeetings Mabrur Satori";
 	}
 
 }
