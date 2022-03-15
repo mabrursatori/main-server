@@ -20,6 +20,9 @@ public class Category {
     @Column(length = 50, nullable = false, unique = false)
     private String name;
 
+    @Column(length = 50, nullable = false, unique = false)
+    private String username;
+
     @Transient
     private Integer age;
 
