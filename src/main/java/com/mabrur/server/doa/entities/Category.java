@@ -5,12 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.Transient;
-import javax.persistence.TemporalType;
-import java.util.Date;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "categories_doa")
 public class Category {
 
     @Id
@@ -20,10 +18,40 @@ public class Category {
     @Column(length = 50, nullable = false, unique = false)
     private String name;
 
-    @Column(length = 50, nullable = false, unique = false)
-    private String username;
+    @Column(name = "image", unique = false, nullable = false, length = 100000)
+    private byte[] image;
 
-    @Transient
-    private Integer age;
+    public Category() {
+    }
+
+    public Category(Long id, String name, String type, byte[] image) {
+        this.id = id;
+        this.name = name;
+        this.image = image;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
 
 }
