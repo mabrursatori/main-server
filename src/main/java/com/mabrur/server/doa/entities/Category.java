@@ -1,14 +1,22 @@
 package com.mabrur.server.doa.entities;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "categories_doa")
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
 public class Category {
 
     @Id
@@ -20,6 +28,10 @@ public class Category {
 
     @Column(name = "image", unique = false, nullable = false, length = 100000)
     private byte[] image;
+
+    // @JsonManagedReference
+    @OneToMany(mappedBy = "category")
+    private Set<Item> items;
 
     public Category() {
     }
@@ -52,6 +64,14 @@ public class Category {
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    public Set<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(Set<Item> items) {
+        this.items = items;
     }
 
 }

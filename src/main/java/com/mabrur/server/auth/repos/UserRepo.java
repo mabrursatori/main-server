@@ -9,4 +9,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 public interface UserRepo extends PagingAndSortingRepository<User, Long> {
     
     Optional<User> findByUsername(String username);
+    Boolean existsByUsername(String username);
 }
