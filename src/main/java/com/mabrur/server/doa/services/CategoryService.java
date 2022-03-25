@@ -41,7 +41,8 @@ public class CategoryService {
 
         try {
             Optional<Category> categoryResult = categoryRepo.findById(id);
-            if(!categoryResult.isPresent()) return null;
+            if (!categoryResult.isPresent())
+                return null;
 
             Category category = categoryResult.get();
 
@@ -51,7 +52,8 @@ public class CategoryService {
             for (byte b : file.getBytes()) {
                 byteObjects[i++] = b;
             }
-            category.setImage(byteObjects);
+            if (byteObjects.length > 0)
+                category.setImage(byteObjects);
             categoryRepo.save(category);
 
             return category;
@@ -78,6 +80,10 @@ public class CategoryService {
 
     public Iterable<Category> findAll() {
         return categoryRepo.findAll();
+    }
+
+    public void deleteById(long id){
+        categoryRepo.deleteById(id);
     }
 
 }

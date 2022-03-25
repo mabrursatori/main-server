@@ -32,8 +32,8 @@ desired effect
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Page Header
-                <small>Optional description</small>
+                Category
+                <small>Table Category</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -49,20 +49,19 @@ desired effect
               -------------------------->
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Spring Boot + WebJars + AdminLTE 2.x</h3>
+                    <h3 class="box-title">Table Category</h3>
                     <div class="box-tools pull-right">
                         <!-- Buttons, labels, and many other things can be placed here! -->
                         <!-- Here is a label for example -->
-                        <span class="label label-primary">2019-04-20</span>
+                        <a th:href="@{'/doa/category/add'}" class="btn btn-primary m-2">Add</a>
                     </div>
                     <!-- /.box-tools -->
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    Hello World
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer">
+                    <div th:if="${message}" th:class="|alert alert-${status}|" role="alert" th:text="${message}">
+                        
+                      </div>
                     <table class="table table-bordered">
                         <thead>
                           <tr>
@@ -74,24 +73,26 @@ desired effect
                         </thead>
                         <tbody>
                          
-                          <tr>
-                            <td>4.</td>
-                            <td>Fix and squish bugs</td>
+                          <tr th:each="category : ${categories}">
+                            <td th:text="${category.id}" ></td>
+                            <td th:text="${category.name}" ></td>
                             <td>
-                              <div class="progress progress-xs progress-striped active">
-                                <div class="progress-bar bg-success" style="width: 90%"></div>
-                              </div>
+                              <img th:src="@{'~/api/doa/category/image/' + ${category.id}}" class="img-thumbnail" width="200">
                             </td>
                             <td>
                                 <div>
-                                    <a class="btn btn-success" >Edit</a>
-                                    <a class="btn btn-danger" >Delete</a>
+                                    <a class="btn btn-success"  th:href="@{'/doa/category/edit/'+${category.id}}" >Edit</a>
+                                    <a class="btn btn-danger"  th:href="@{'/doa/category/delete/'+${category.id}}" >Delete</a>
                                 </div>
                                
                             </td>
                           </tr>
                         </tbody>
                       </table>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    
                 </div>
                 <!-- box-footer -->
             </div>

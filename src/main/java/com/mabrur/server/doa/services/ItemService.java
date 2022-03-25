@@ -33,4 +33,12 @@ public class ItemService {
         return itemRepo.findAll();
     }
 
+    public Optional<Item> findOne(Long id) {
+        return itemRepo.findById(id);
+    }
+
+    public void deleteById(long id) {
+        itemRepo.deleteById(id);
+    }
+
 }

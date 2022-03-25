@@ -30,7 +30,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.MissingServletRequestPartException;
 
 @RestController
-@RequestMapping("/doa/api/category")
+@RequestMapping("/api/doa/category")
 public class APICategoryController {
 
     @Autowired

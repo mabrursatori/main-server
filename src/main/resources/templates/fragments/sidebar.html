@@ -32,7 +32,18 @@
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">Función de plataforma</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Gestión de clientes</span></a></li>
+                <li class="treeview active">
+                    <a href="#"><i class="fa fa-link"></i> <span>Gestión del administrador</span>
+                        <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a th:href="@{'/doa/category'}" >Category</a></li>
+                        <li><a th:href="@{'/doa/item'}" >Item</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><i class="fa fa-link"></i> <span>Gestión de clientes</span></a></li>
                 <li><a href="#"><i class="fa fa-link"></i> <span>Gestión de pedidos</span></a></li>
                 <li class="treeview">
                     <a href="#"><i class="fa fa-link"></i> <span>Gestión del administrador</span>

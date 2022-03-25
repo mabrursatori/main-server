@@ -23,7 +23,7 @@ public class ServerApplication {
 	@GetMapping
 	public String index(Model model) {
 
-		return "doa/index";
+		return "index";
 	}
 
 	@Bean
